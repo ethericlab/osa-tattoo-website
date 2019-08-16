@@ -1,11 +1,16 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
-
 import GlobalStyles from "./GlobalStyles"
 import Sidebar from "../../organisms/Sidebar/Sidebar"
-import BgImageContainer from "./BgImageContainer"
 import Menu from "../../organisms/Menu/Menu"
+
+const Container = styled.div`
+  padding: 35px 30px 0 25px;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+`
 
 const SidebarWrapper = styled.aside`
   width: 190px;
@@ -23,13 +28,13 @@ const ContentWrapper = styled.main`
 const Layout = ({ children }) => (
   <>
     <GlobalStyles />
-    <BgImageContainer>
+    <Container>
       <Menu />
       <SidebarWrapper>
         <Sidebar />
       </SidebarWrapper>
       <ContentWrapper>{children}</ContentWrapper>
-    </BgImageContainer>
+    </Container>
   </>
 )
 

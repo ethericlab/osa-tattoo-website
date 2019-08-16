@@ -3,12 +3,12 @@ import { graphql, useStaticQuery } from "gatsby"
 import BgImg from "gatsby-background-image"
 import React from "react"
 
-const BgImageContainer = styled((props) => {
+const BackgroundImage = styled((props) => {
   const data = useStaticQuery(graphql`
       query {
-          image: file(relativePath: { eq: "bg-1.png" }) {
+          image: file(relativePath: { eq: "bg-2.png" }) {
               childImageSharp {
-                  fluid(maxWidth: 4096, fit: COVER, duotone: {highlight: "#000000", shadow: "#000000", opacity: 50}) {
+                  fluid(maxWidth: 1000) {
                       ...GatsbyImageSharpFluid_withWebp
                   }
               }
@@ -18,18 +18,13 @@ const BgImageContainer = styled((props) => {
 
   return <BgImg fluid={data.image.childImageSharp.fluid} {...props} />
 })`
-  padding: 35px 30px 0 25px;
-  height: 100%;
-  display: flex;
-  align-items: stretch;
-  
-  &&&::before {
-    opacity: 0.5;
-  }
-  
-  &&&::after {
-    opacity: 0.2;
-  }
+  position: fixed !important;
+  // Copied from Figma... IDK how to place this image otherwise
+  left: 58.82%;
+  right: 8.82%;
+  top: 24.78%;
+  bottom: 14.39%;
+  z-index: -1;
 `
 
-export default BgImageContainer
+export default BackgroundImage

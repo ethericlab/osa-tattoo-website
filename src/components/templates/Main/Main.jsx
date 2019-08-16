@@ -1,11 +1,14 @@
-import SEO from "../../atoms/SEO/SEO"
 import React from "react"
 import styled from "styled-components"
+import { Link } from "gatsby"
 import { h1, h3, underline } from "../../../utils/css"
+import SEO from "../../atoms/SEO/SEO"
 import ArrowRight from "../../atoms/ArrowRight/ArrowRight"
 import Indicator from "../../atoms/Indicator/Indicator"
+import VerticalSeparator from "../../atoms/VerticalSeparator/VerticalSeparator"
+import BackgroundImage from "./BackgroundImage"
 
-const Container = styled.div`
+const Container = styled.section`
   height: 100%;
   display: grid;
   grid:
@@ -16,7 +19,6 @@ const Container = styled.div`
     "indicators . date" 30px
     / 320px auto 565px;
   padding-bottom: 40px;
-  //justify-content: stretch;
 `
 
 const Title = styled.h1`
@@ -27,10 +29,11 @@ const Title = styled.h1`
   margin-bottom: 13px;
 `
 
-const Arrow = styled(ArrowRight)`
+const ArrowLink = styled(Link)`
   grid-area: arrow;
   justify-self: center;
   align-self: start;
+  cursor: pointer;
 `
 
 const MoreText = styled.h1`
@@ -44,7 +47,7 @@ const MoreText = styled.h1`
   }
 `
 
-const AddressText = styled.h1`
+const AddressText = styled.address`
   grid-area: address;
   ${h1};
   text-transform: uppercase;
@@ -72,13 +75,10 @@ const Indicators = styled.div`
   display: flex;
 `
 
-const Separator = styled.div`
-  margin-left: auto;
-`
-
 const Main = () => (
   <>
     <SEO title="Home" />
+    <BackgroundImage />
     <Container>
       <Title>
         <strong>OSA</strong>
@@ -87,13 +87,12 @@ const Main = () => (
         <br />
         STUDIO
       </Title>
-      <Arrow />
+      <ArrowLink to="/contact/">
+        <ArrowRight />
+      </ArrowLink>
       <MoreText>
-        {/*
-            This span is needed here in order to correctly position the ::after underline element, since css grid
-            considers it as an item in the grid
-        */}
-        <span>More</span>
+        <span>More</span>{" "}
+        {/* This span is needed here in order to correctly position the ::after underline element, since css grid considers it as an item in the grid */}
       </MoreText>
       <AddressText>
         <span>
@@ -104,7 +103,7 @@ const Main = () => (
       </AddressText>
       <Indicators>
         <Indicator active />
-        <Separator />
+        <VerticalSeparator />
         <Indicator />
         <Indicator />
       </Indicators>
