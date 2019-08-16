@@ -8,7 +8,7 @@ import BgImageContainer from "./BgImageContainer"
 import Menu from "../../organisms/Menu/Menu"
 
 const SidebarWrapper = styled.aside`
-  flex: 0 0 190px;
+  width: 190px;
   height: 100%;
   padding-bottom: 40px;
   border-right: 1px solid #BFBFBF;
@@ -18,7 +18,6 @@ const ContentWrapper = styled.main`
   height: 100%;
   width: 100%;
   padding-left: 30px;
-  padding-right: 30px;
 `
 
 const Layout = ({ children }) => (

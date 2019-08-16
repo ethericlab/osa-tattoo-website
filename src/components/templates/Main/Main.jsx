@@ -3,6 +3,7 @@ import React from "react"
 import styled from "styled-components"
 import { h1, h3, underline } from "../../../utils/css"
 import ArrowRight from "../../atoms/ArrowRight/ArrowRight"
+import Indicator from "../../atoms/Indicator/Indicator"
 
 const Container = styled.div`
   height: 100%;
@@ -14,7 +15,7 @@ const Container = styled.div`
     ". . ." 25px
     "indicators . date" 30px
     / 320px auto 565px;
-    padding-bottom: 40px;
+  padding-bottom: 40px;
   //justify-content: stretch;
 `
 
@@ -48,9 +49,12 @@ const AddressText = styled.h1`
   ${h1};
   text-transform: uppercase;
   color: #d9d9d9;
+  //width: 565px;
+  //display: inline-block;
 
   & > span {
     ${underline(60, { color: "#D9D9D9" })};
+    width: 100%; // required for longer underline, as in the design
   }
 `
 
@@ -59,7 +63,17 @@ const DateText = styled.p`
   margin: 0;
   ${h3};
   font-weight: 400;
-  color: #D9D9D9;
+  color: #d9d9d9;
+`
+
+const Indicators = styled.div`
+  width: 50%;
+  grid-area: indicators;
+  display: flex;
+`
+
+const Separator = styled.div`
+  margin-left: auto;
 `
 
 const Main = () => (
@@ -88,6 +102,12 @@ const Main = () => (
           20 — 19
         </span>
       </AddressText>
+      <Indicators>
+        <Indicator active />
+        <Separator />
+        <Indicator />
+        <Indicator />
+      </Indicators>
       <DateText>June, 2019</DateText>
     </Container>
   </>

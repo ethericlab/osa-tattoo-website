@@ -23,8 +23,12 @@ const BgImageContainer = styled((props) => {
   display: flex;
   align-items: stretch;
   
-  &&&::before, &&&::after {
+  &&&::before {
     opacity: 0.5;
+  }
+  
+  &&&::after {
+    opacity: 0.2;
   }
 `
 
