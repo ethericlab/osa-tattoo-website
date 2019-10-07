@@ -2,7 +2,7 @@ import styled from "styled-components"
 import * as PropTypes from 'prop-types'
 
 
-const Indicator = styled.div.attrs(({ active = false }) => ({
+const Circle = styled.div.attrs(({ active = false }) => ({
   style: {
     background: active ? '#fff' : 'transparent'
   }
@@ -16,12 +16,12 @@ const Indicator = styled.div.attrs(({ active = false }) => ({
   margin-right: 10px;
 `
 
-Indicator.propTypes = {
+Circle.propTypes = {
   active: PropTypes.bool
 }
 
-Indicator.defaultProps = {
+Circle.defaultProps = {
   active: false
 }
 
-export default Indicator
+export default Circle
