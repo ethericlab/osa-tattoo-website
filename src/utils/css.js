@@ -1,5 +1,17 @@
 import { css } from 'styled-components'
 
+export const SCALE_RATIO = 1.618;
+
+export const scale = (() => {
+  const result = {
+    s0: 1
+  }
+  for (let i = 1; i <= 10; i++) {
+    result[`s${i}`] = result.s0 * Math.pow(SCALE_RATIO, i)
+    result[`s-${i}`] = result.s0 / Math.pow(SCALE_RATIO, i)
+  }
+})()
+
 export const h1 = css`
   font-style: normal;
   font-weight: normal;
