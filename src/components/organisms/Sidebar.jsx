@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { bottomUp, h3, topDown, underline } from "../../../utils/css"
+import { bottomUp, h3, topDown, underline } from "../../utils/css"
 
 const Container = styled.div`
   height: 100%;

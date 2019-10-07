@@ -1,12 +1,44 @@
 import React from "react"
 import styled from "styled-components"
-import { Link } from "gatsby"
-import { h1, h3, underline } from "../../../utils/css"
-import SEO from "../../atoms/SEO/SEO"
-import ArrowRight from "../../atoms/ArrowRight/ArrowRight"
-import Indicator from "../../atoms/Indicator/Indicator"
-import VerticalSeparator from "../../atoms/VerticalSeparator/VerticalSeparator"
-import BackgroundImage from "./BackgroundImage"
+import { graphql, Link, useStaticQuery } from "gatsby"
+import { h1, h3, underline } from "../../utils/css"
+import SEO from "../atoms/SEO"
+import ArrowRight from "../atoms/ArrowRight/ArrowRight"
+import Circle from "../atoms/Circle"
+import VerticalSeparator from "../atoms/VerticalSeparator"
+import Layout from "../organisms/Layout"
+import BgImg from "gatsby-background-image"
+
+const BackgroundImage = styled((props) => {
+  const data = useStaticQuery(graphql`
+      query {
+          image: file(relativePath: { eq: "bg-1.png" }) {
+              childImageSharp {
+                  fluid(maxWidth: 4096) {
+                      ...GatsbyImageSharpFluid_withWebp
+                  }
+              }
+          }
+      }
+  `)
+
+  return <BgImg fluid={data.image.childImageSharp.fluid} {...props} />
+})`
+  position: fixed !important;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  
+  &::before {
+    opacity: 0.5 !important;
+  }
+  
+  &::after {
+    opacity: 0.4 !important;
+  }
+`
 
 const Container = styled.section`
   height: 100%;
@@ -76,7 +108,7 @@ const Indicators = styled.div`
 `
 
 const Main = () => (
-  <>
+  <Layout>
     <SEO title="Home" />
     <BackgroundImage />
     <Container>
@@ -102,14 +134,14 @@ const Main = () => (
         </span>
       </AddressText>
       <Indicators>
-        <Indicator active />
+        <Circle active />
         <VerticalSeparator />
-        <Indicator />
-        <Indicator />
+        <Circle />
+        <Circle />
       </Indicators>
       <DateText>June, 2019</DateText>
     </Container>
-  </>
+  </Layout>
 )
 
 export default Main

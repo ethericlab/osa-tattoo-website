@@ -1,8 +1,34 @@
 import React from 'react'
 import styled from "styled-components"
-import SEO from "../../atoms/SEO/SEO"
-import { h1, h3, h4 } from "../../../utils/css"
-import BackgroundImage from "./BackgroundImage"
+import SEO from "../atoms/SEO"
+import { h1, h3, h4 } from "../../utils/css"
+import Layout from "../organisms/Layout"
+import { graphql, useStaticQuery } from "gatsby"
+import BgImg from "gatsby-background-image"
+
+const BackgroundImage = styled((props) => {
+  const data = useStaticQuery(graphql`
+      query {
+          image: file(relativePath: { eq: "bg-2.png" }) {
+              childImageSharp {
+                  fluid(maxWidth: 1000) {
+                      ...GatsbyImageSharpFluid_withWebp
+                  }
+              }
+          }
+      }
+  `)
+
+  return <BgImg fluid={data.image.childImageSharp.fluid} {...props} />
+})`
+  position: fixed !important;
+  // Copied from Figma... IDK how to place this image otherwise
+  left: 58.82%;
+  right: 8.82%;
+  top: 24.78%;
+  bottom: 14.39%;
+  z-index: -1;
+`
 
 const Container = styled.section`
   height: 100%;
@@ -92,7 +118,7 @@ const ByText = styled.p`
 `
 
 const Contact = () => (
-  <>
+  <Layout>
     <SEO title="Contact" />
     <BackgroundImage />
     <Container>
@@ -110,7 +136,7 @@ const Contact = () => (
       <EmailLink href="mailto:hi@osa.tattoo">hi@osa.tattoo</EmailLink>
       <ByText>©2019 Etheric for OSA</ByText>
     </Container>
-  </>
+  </Layout>
 );
 
 export default Contact
