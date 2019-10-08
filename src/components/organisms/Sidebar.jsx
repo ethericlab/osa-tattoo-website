@@ -9,11 +9,6 @@ const Container = styled.div`
   padding-bottom: 40px;
 `
 
-const TopTitle = styled.h3`
-  ${h3}
-  ${topDown}
-`
-
 const TopHeading = styled.h3`
   ${h3}
   ${topDown};

@@ -32,7 +32,7 @@ const CircleContainer = styled.button`
   }
 `
 
-const MenuText = styled(Text).attrs({ as: 'body' })`
+const MenuText = styled(Text).attrs({ variant: 'body' })`
   transform: rotate(-15deg);
   text-transform: uppercase;
 `

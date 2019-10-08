@@ -55,14 +55,16 @@ export const ContentWrapper = styled.main`
 
 const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
-    <GlobalStyles />
-    <Container>
-      <Menu />
-      <SidebarWrapper>
-        <Sidebar />
-      </SidebarWrapper>
-      <ContentWrapper>{children}</ContentWrapper>
-    </Container>
+    <>
+      <GlobalStyles />
+      <Container>
+        <Menu />
+        <SidebarWrapper>
+          <Sidebar />
+        </SidebarWrapper>
+        <ContentWrapper>{children}</ContentWrapper>
+      </Container>
+    </>
   </ThemeProvider>
 )
 

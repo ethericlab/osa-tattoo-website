@@ -2,7 +2,7 @@ import React from 'react'
 import * as PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
-const Text = ({ variant, ...props }) => {
+const Text = ({ variant = 'body', ...props }) => {
   switch (variant) {
     case "display": return <Display {...props} />
     case "headline": return <Headline {...props} />

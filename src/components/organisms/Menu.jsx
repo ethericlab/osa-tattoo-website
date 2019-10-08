@@ -46,13 +46,15 @@ const GridContainer = styled.div`
     / 250px auto 650px;
 `
 
-const MenuLink = styled(Text).attrs({
-  as: Link,
-  variant: "title",
-  activeStyle: { color: theme.colors.red.default },
-})`
-  text-decoration: none;
-`
+const MenuLink = props => (
+  <Text
+    as={Link}
+    variant="headline"
+    activeStyle={{ color: theme.colors.red.default }}
+    style={{ textDecoration: 'none' }}
+    {...props}
+  />
+)
 
 const StyledMenuButton = styled(MenuButton)`
   transition: transform 0.1s ease-in, opacity 0.3s ease-in;
@@ -150,7 +152,11 @@ const Menu = () => {
               </li>
             </VStack>
           </Box>
-          <HStack gridArea="languages" style={{ gridArea: "languages" }} spacing="10px">
+          <HStack
+            gridArea="languages"
+            style={{ gridArea: "languages" }}
+            spacing="10px"
+          >
             <LanguageCircle active>EN</LanguageCircle>
             <LanguageCircle>CZ</LanguageCircle>
           </HStack>
