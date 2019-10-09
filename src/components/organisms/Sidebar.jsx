@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import { bottomUp, h3, topDown, underline } from "../../utils/css"
+import Text from '../atoms/Text'
+import { underline } from "../../utils/css"
 
 const Container = styled.div`
   height: 100%;
@@ -9,26 +10,35 @@ const Container = styled.div`
   padding-bottom: 40px;
 `
 
-const TopHeading = styled.h3`
-  ${h3}
-  ${topDown};
+const TopHeading = styled(Text).attrs({ variant: 'headline' })`
+  line-height: 1;
+  letter-spacing: -1px;
   margin-bottom: auto;
+  text-transform: uppercase;
+  /* Top-down transform */
+  text-align: right;
+  transform-origin: top right;
+  transform: translateX(-100%) rotate(-90deg);
 `
 
-const BottomHeading = styled.h3`
-  ${h3}
-  ${bottomUp}
+const BottomHeading = styled(Text).attrs({ variant: 'headline' })`
+  line-height: 1;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  /* Bottom-up transform */
+  transform-origin: top left;
+  transform: translateY(100%) rotate(-90deg);
 `
 
-const BottomFirstPart = styled.span`
+const BottomHeadingFirstPart = styled.span`
   margin-left: 50px;
   margin-bottom: 5px;
   white-space: nowrap;
 `
 
-const BottomSecondPart = styled.span`
-  ${underline(3)};
+const BottomHeadingSecondPart = styled.span`
   transform: translateY(5px);
+  ${underline(3)}
 `
 
 const Sidebar = () => (
@@ -39,9 +49,9 @@ const Sidebar = () => (
       Tattoo studio
     </TopHeading>
     <BottomHeading>
-      <BottomFirstPart>Prague. SS2019</BottomFirstPart>
+      <BottomHeadingFirstPart>Prague. SS2019</BottomHeadingFirstPart>
       <br />
-      <BottomSecondPart>Booking Open</BottomSecondPart>
+      <BottomHeadingSecondPart>Booking Open</BottomHeadingSecondPart>
     </BottomHeading>
   </Container>
 )

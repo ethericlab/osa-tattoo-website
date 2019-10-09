@@ -1,17 +1,5 @@
 import { css } from 'styled-components'
 
-export const SCALE_RATIO = 1.618;
-
-export const scale = (() => {
-  const result = {
-    s0: 1
-  }
-  for (let i = 1; i <= 10; i++) {
-    result[`s${i}`] = result.s0 * Math.pow(SCALE_RATIO, i)
-    result[`s-${i}`] = result.s0 / Math.pow(SCALE_RATIO, i)
-  }
-})()
-
 export const h1 = css`
   font-style: normal;
   font-weight: normal;
@@ -42,20 +30,7 @@ export const h4 = css`
   color: #FFFFFF;
 `
 
-export const topDown = css`
-  text-transform: uppercase;
-  text-align: right;
-  transform-origin: top right;
-  transform: translateX(-100%) rotate(-90deg);
-`
-
-export const bottomUp = css`
-  text-transform: uppercase;
-  transform-origin: top left;
-  transform: translateY(100%) rotate(-90deg);
-`
-
-export const underline = (distance = 3, { height = 1, color = '#fff'} = {}) => css`
+export const underline = (distance = 3, { height = 1, color } = {}) => css`
   position: relative;
   display: inline-block;
 
@@ -66,6 +41,6 @@ export const underline = (distance = 3, { height = 1, color = '#fff'} = {}) => c
     right: 0;
     bottom: ${-distance}px;
     height: ${height}px;
-    background: ${color};
+    background: ${props => color || props.theme.colors.primary};
   }
 `

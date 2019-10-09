@@ -1,10 +1,10 @@
 import React from "react"
-import PropTypes from "prop-types"
+import * as PropTypes from "prop-types"
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components"
 import Sidebar from "./Sidebar"
-import Menu from "./Menu"
+import Menu from "./Menu/Menu"
 import { normalize } from "polished"
-import theme from "../../theme"
+import { dark, light } from "../../theme"
 
 export const GlobalStyles = createGlobalStyle`
   ${normalize()}
@@ -23,8 +23,8 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: #070707;
-    color: #fff;
+    background: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.primary};
   }
   
   html, body, #___gatsby, #gatsby-focus-wrapper {
@@ -44,7 +44,7 @@ export const SidebarWrapper = styled.aside`
   width: 190px;
   height: 100%;
   padding-bottom: 40px;
-  border-right: 1px solid #bfbfbf;
+  border-right: 1px solid ${props => props.theme.colors.secondary};
 `
 
 export const ContentWrapper = styled.main`
@@ -53,8 +53,10 @@ export const ContentWrapper = styled.main`
   padding-left: 30px;
 `
 
-const Layout = ({ children }) => (
-  <ThemeProvider theme={theme}>
+const Layout = ({ children, theme = "dark" }) => (
+  <ThemeProvider
+    theme={theme === "dark" ? dark : theme === "light" ? light : theme}
+  >
     <>
       <GlobalStyles />
       <Container>
@@ -69,6 +71,7 @@ const Layout = ({ children }) => (
 )
 
 Layout.propTypes = {
+  theme: PropTypes.oneOf(['light', 'dark']),
   children: PropTypes.node.isRequired,
 }
 

@@ -35,7 +35,7 @@ const Box = ({
       paddingLeft: pl,
       paddingRight: pr,
       gridArea,
-      display: flex ? "flex" : "block",
+      display: flex ? "flex" : undefined,
       flexDirection: direction,
       justifyContent: mainAxis,
       alignItem: crossAxis,

@@ -35,6 +35,7 @@ const CircleContainer = styled.button`
 const MenuText = styled(Text).attrs({ variant: 'body' })`
   transform: rotate(-15deg);
   text-transform: uppercase;
+  color: ${props => props.theme.colors.gray.lighter}
 `
 
 const MenuButton = ({ onClick, className }) => (
