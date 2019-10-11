@@ -19,7 +19,14 @@ const Text = ({ variant = "body", tag, uppercase, underline, ...props }) => {
       break
   }
 
-  return <Component as={tag} {...props} />
+  return (
+    <Component
+      as={tag}
+      uppercase={uppercase}
+      underline={underline}
+      {...props}
+    />
+  )
 }
 
 Text.propTypes = {
@@ -32,18 +39,8 @@ const common = css`
   font-style: normal;
   font-weight: normal;
   color: ${props => props.theme.colors.primary};
-
-  ${props =>
-    props.uppercase &&
-    css`
-      text-transform: uppercase;
-    `}
-
-  ${props =>
-    props.underline &&
-    css`
-      text-decoration: underline;
-    `}
+  text-transform: ${props => (props.uppercase ? "uppercase" : "none")};
+  text-decoration: ${props => (props.underline ? "underline" : "none")};
 `
 
 const Display = styled.h1`

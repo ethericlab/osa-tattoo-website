@@ -38,11 +38,11 @@ export const Container = styled.div`
 `
 
 export const SidebarWrapper = styled.aside`
+  position: fixed;
   top: 40px;
   left: 0;
-  position: fixed;
+  bottom: 0;
   width: 190px;
-  height: 100%;
   padding: 10px 0 40px 25px;
   border-right: 1px solid ${props => props.theme.colors.secondary};
 `

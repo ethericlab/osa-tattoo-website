@@ -138,8 +138,8 @@ const Menu = () => {
               <Close />
             </CloseButton>
 
-            <Box as="nav" gridArea="menu">
-              <VStack as="ul" style={{ listStyle: "none" }}>
+            <Box tag="nav" gridArea="menu">
+              <VStack tag="ul" style={{ listStyle: "none" }}>
                 <li>
                   <MenuLink to="/">Main</MenuLink>
                 </li>
@@ -158,7 +158,7 @@ const Menu = () => {
               </VStack>
             </Box>
             <Box flex direction="column" mainAxis="flex-end" gridArea="social">
-              <VStack as="ul" spacing="10px" style={{ listStyle: "none" }}>
+              <VStack tag="ul" spacing="10px" style={{ listStyle: "none" }}>
                 <li>
                   <Text variant="body">Instagram</Text>
                 </li>
@@ -183,7 +183,7 @@ const Menu = () => {
               <Box style={{ borderTop: "1px solid white", width: "100%" }} />
               <VStack style={{ marginTop: 25 }} spacing="12px">
                 <Text variant="body">+420 777 777 777</Text>
-                <Text as="a" variant="body" href="mailto:hi@osa.tattoo">
+                <Text tag="a" variant="body" href="mailto:hi@osa.tattoo">
                   hi@osa.tattoo
                 </Text>
                 <Text variant="body">

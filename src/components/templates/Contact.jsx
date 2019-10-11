@@ -1,142 +1,139 @@
-import React from 'react'
+import React from "react"
 import styled from "styled-components"
 import SEO from "../atoms/SEO"
-import { h1, h3, h4 } from "../../utils/css"
 import Layout from "../organisms/Layout"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 import BgImg from "gatsby-background-image"
+import Box from "../atoms/Box"
+import Text from "../atoms/Text"
 
-const BackgroundImage = styled((props) => {
+const BackgroundImage = styled(props => {
   const data = useStaticQuery(graphql`
-      query {
-          image: file(relativePath: { eq: "bg-2.png" }) {
-              childImageSharp {
-                  fluid(maxWidth: 1000) {
-                      ...GatsbyImageSharpFluid_withWebp
-                  }
-              }
+    query {
+      image: file(relativePath: { eq: "bg-2.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 1000) {
+            ...GatsbyImageSharpFluid_withWebp
           }
+        }
       }
+    }
   `)
 
   return <BgImg fluid={data.image.childImageSharp.fluid} {...props} />
 })`
-  position: fixed !important;
-  // Copied from Figma... IDK how to place this image otherwise
-  left: 58.82%;
-  right: 8.82%;
-  top: 24.78%;
-  bottom: 14.39%;
+  position: absolute !important;
+  top: 223px;
+  right: 127px;
+  width: 466px;
+  height: 547px;
   z-index: -1;
 `
 
-const Container = styled.section`
-  height: 100%;
-  display: grid;
-  grid:
-    "menu menu ." 30px
-    ". . ." 100px
-    ". phone phone" 90px
-    ". . ." 45px
-    "address address address" 180px
-    ". . ." 20px 
-    "city city city" 90px
-    ". country country" 90px
-    ". . ." auto
-    "email . by" 30px
-    / 245px 85px auto;
-  padding-bottom: 40px;
-`
+const Nav = ({ children, ...props }) => (
+  <Box tag="nav" {...props}>
+    <ul
+      css={`
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
 
-const Header = styled.header`
-  grid-area: menu;
-  display: flex;
-`
+        && > * + * {
+          margin-left: 15px;
+        }
+      `}
+    >
+      {children}
+    </ul>
+  </Box>
+)
 
-const Heading = styled.h3`
-  ${h3};
-  color: #D9D9D9;
-  text-transform: uppercase;
-`
-
-const Nav = styled.nav`
-  margin-left: auto;
-`
-
-const NavItem = styled.a.attrs(({ active }) => ({
-  style: {
-    opacity: active ? 1 : 0.5
-  }
-}))`
-  ${h3};
-  color: #D9D9D9;
-  text-transform: uppercase;
-`
-
-const PhoneText = styled.h1`
-  grid-area: phone;
-  ${h1};
-  color: #D9D9D9;
-  text-transform: uppercase;
-`
-
-const AddressText = styled.h1`
-  grid-area: address;
-  ${h1};
-  color: #D9D9D9;
-  text-transform: uppercase;
-`
-
-const CityText = styled.h1`
-  grid-area: city;
-  ${h1};
-  color: #D9D9D9;
-  text-transform: uppercase;
-`
-
-const CountryText = styled.h1`
-  grid-area: country;
-  ${h1};
-  color: #D9D9D9;
-  text-transform: uppercase;
-`
-
-const EmailLink = styled.a`
-  grid-area: email;
-  ${h3};
-  color: #D9D9D9;
-  text-decoration: underline;
-`
-
-const ByText = styled.p`
-  grid-area: by;
-  ${h4};
-  color: #D9D9D9;
-  opacity: 0.3;
-  justify-self: end;
-  margin-right: 30px;
-`
+const NavItem = props => (
+  <li>
+    <Text tag={Link} variant="headline" uppercase {...props} />
+  </li>
+)
 
 const Contact = () => (
   <Layout>
     <SEO title="Contact" />
     <BackgroundImage />
-    <Container>
-      <Header>
-        <Heading>About</Heading>
+    <Box flex direction="column" mb="40px">
+      <Box tag="header" flex>
         <Nav>
-          <NavItem active css={`margin-right: 15px`}>Info</NavItem>
-          <NavItem>Map</NavItem>
+          <NavItem to="/about">About</NavItem>
+          <NavItem to="/contact" style={{ marginLeft: 120 }}>
+            Info
+          </NavItem>
+          <NavItem to="/map" style={{ opacity: 0.5 }}>
+            Map
+          </NavItem>
         </Nav>
-      </Header>
-      <PhoneText>+420 123 456 789</PhoneText>
-      <AddressText>Banskobystricka 2019/08</AddressText>
-      <CityText>Prague</CityText>
-      <CountryText>Czechia</CountryText>
-      <EmailLink href="mailto:hi@osa.tattoo">hi@osa.tattoo</EmailLink>
-      <ByText>©2019 Etheric for OSA</ByText>
-    </Container>
+      </Box>
+
+      <Text
+        variant="display"
+        uppercase
+        css={`
+          margin-top: 110px;
+          margin-right: 110px;
+          align-self: flex-end;
+        `}
+      >
+        +420 123 456 789
+      </Text>
+
+      <Text
+        variant="display"
+        uppercase
+        css={`
+          margin-top: 45px;
+        `}
+      >
+        Banskobystricka
+        <br />
+        2019/41
+      </Text>
+
+      <Text
+        variant="display"
+        uppercase
+        css={`
+          margin-top: 20px;
+        `}
+      >
+        Prague
+      </Text>
+
+      <Text
+        variant="display"
+        uppercase
+        css={`
+          margin-left: 240px;
+        `}
+      >
+        Czechia
+      </Text>
+
+      <Box flex mt="145px">
+        <Text variant="headline" underline href="mailto:hi@osa.tattoo">
+          hi@osa.tattoo
+        </Text>
+
+        <Text
+          variant="body"
+          css={`
+            opacity: 0.4;
+            margin-left: auto;
+            margin-right: 30px;
+          `}
+        >
+          ©2019 Etheric for OSA
+        </Text>
+      </Box>
+    </Box>
   </Layout>
-);
+)
 
 export default Contact
