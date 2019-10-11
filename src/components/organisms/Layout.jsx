@@ -34,23 +34,24 @@ export const GlobalStyles = createGlobalStyle`
 `
 
 export const Container = styled.div`
-  padding: 35px 30px 0 25px;
   height: 100%;
-  display: flex;
-  align-items: stretch;
 `
 
 export const SidebarWrapper = styled.aside`
+  top: 40px;
+  left: 0;
+  position: fixed;
   width: 190px;
   height: 100%;
-  padding-bottom: 40px;
+  padding: 10px 0 40px 25px;
   border-right: 1px solid ${props => props.theme.colors.secondary};
 `
 
 export const ContentWrapper = styled.main`
+  //margin-left: 190px;
   height: 100%;
   width: 100%;
-  padding-left: 30px;
+  padding: 35px 30px 0 calc(190px + 30px);
 `
 
 const Layout = ({ children, theme = "dark" }) => (

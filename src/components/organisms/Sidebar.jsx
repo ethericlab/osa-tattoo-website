@@ -7,7 +7,6 @@ const Container = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding-bottom: 40px;
 `
 
 const TopHeading = styled(Text).attrs({ variant: 'headline' })`
@@ -19,6 +18,7 @@ const TopHeading = styled(Text).attrs({ variant: 'headline' })`
   text-align: right;
   transform-origin: top right;
   transform: translateX(-100%) rotate(-90deg);
+  width: max-content;
 `
 
 const BottomHeading = styled(Text).attrs({ variant: 'headline' })`
@@ -38,6 +38,7 @@ const BottomHeadingFirstPart = styled.span`
 
 const BottomHeadingSecondPart = styled.span`
   transform: translateY(5px);
+  width: max-content;
   ${underline(3)}
 `
 
